@@ -1,12 +1,11 @@
-package com.afedulov.search.search;
+package com.afedulov.search;
 
-import com.afedulov.search.GoogleWebSearch;
-import com.afedulov.search.SearchQuery;
-import com.afedulov.search.SearchResult;
+import com.afedulov.search.GoogleWebSearch.SearchConfig;
 
 import org.junit.Test;
 import org.junit.Before;
 import org.junit.After;
+import org.junit.experimental.categories.Category;
 
 import static org.hamcrest.Matchers.equalTo;
 import static org.junit.Assert.assertThat;
@@ -18,6 +17,7 @@ import static org.junit.Assert.assertThat;
  * @version 1.0
  * @since <pre>Jul 15, 2015</pre>
  */
+@Category(IntegrationTest.class)
 public class GoogleWebSearchTest {
 
   @Before
@@ -29,11 +29,23 @@ public class GoogleWebSearchTest {
   }
 
   @Test
-  public void testSearch() {
+  public void shouldSearch() {
     SearchQuery query = new SearchQuery.Builder("bunnies")
         .site("stackoverflow.com")
         .numResults(10).build();
     SearchResult result = new GoogleWebSearch().search(query);
     assertThat(result.getSize(), equalTo(10));
   }
+
+  @Test
+  public void shouldSearchWithConfig() {
+    SearchQuery query = new SearchQuery.Builder("bunnies")
+        .site("stackoverflow.com")
+        .numResults(10).build();
+    SearchConfig config = new SearchConfig();
+    config.setGOOGLE_SEARCH_URL_PREFIX("https://www.google.de/search?");
+    SearchResult result = new GoogleWebSearch(config).search(query);
+    assertThat(result.getSize(), equalTo(10));
+  }
+
 }

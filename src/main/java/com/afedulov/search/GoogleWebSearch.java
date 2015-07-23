@@ -17,6 +17,7 @@ import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import lombok.Data;
 import lombok.Setter;
 import lombok.extern.slf4j.Slf4j;
 
@@ -68,7 +69,7 @@ public class GoogleWebSearch {
   }
 
   private String getUri(SearchQuery query) {
-    String uri = CONFIG.GOOGLE_SEARCH_URL.replaceAll(CONFIG.PLHD_QUERY, query.getQuery());
+    String uri = CONFIG.getGoogleSearchUrl().replaceAll(CONFIG.PLHD_QUERY, query.getQuery());
     uri = uri.replaceAll(CONFIG.PLHD_RESULTS_NUM,
                          ifPresent(CONFIG.PLHD_RESULTS_NUM, query.getNumResults()));
     uri = uri.replaceAll(CONFIG.PLHD_SITE, ifPresent(CONFIG.PLHD_SITE, query.getSite()));
@@ -103,9 +104,8 @@ public class GoogleWebSearch {
     return hitsUrls;
   }
 
-  @Setter
-  public class SearchConfig {
-
+  @Data
+  public static class SearchConfig {
     /* Placeholders */
     private final String PLHD_QUERY       = "__query__";
     private       String PLHD_RESULTS_NUM = "&num=";
@@ -116,8 +116,11 @@ public class GoogleWebSearch {
     private final Pattern PURE_URL_PATTERN = Pattern.compile(PURE_URL_REGEX);
 
     private String CACHE_URL         = "http://webcache.googleusercontent.com";
-    private String GOOGLE_SEARCH_URL =
-        "https://www.google.com/search?"
-        + "q=" + PLHD_QUERY + PLHD_RESULTS_NUM + PLHD_SITE;
+
+    private String GOOGLE_SEARCH_URL_PREFIX = "https://www.google.com/search?";
+
+    public String getGoogleSearchUrl(){
+      return  GOOGLE_SEARCH_URL_PREFIX + "q=" + PLHD_QUERY + PLHD_RESULTS_NUM + PLHD_SITE;
+    }
   }
 }
