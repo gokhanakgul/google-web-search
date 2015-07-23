@@ -30,7 +30,7 @@ public class GoogleWebSearchTest {
 
   @Test
   public void shouldSearch() {
- //Intentioanally commented out to comply to Google Terms of Service
+ //Intentionally commented out to comply with Google Terms of Service
  /*   SearchQuery query = new SearchQuery.Builder("bunnies")
         .site("stackoverflow.com")
         .numResults(10).build();
@@ -40,7 +40,7 @@ public class GoogleWebSearchTest {
 
   @Test
   public void shouldSearchWithConfig() {
-  //Intentioanally commented out to comply to Google Terms of Service
+  //Intentionally commented out to comply with Google Terms of Service
    /* SearchQuery query = new SearchQuery.Builder("bunnies")
         .site("stackoverflow.com")
         .numResults(10).build();
