@@ -30,22 +30,24 @@ public class GoogleWebSearchTest {
 
   @Test
   public void shouldSearch() {
-    SearchQuery query = new SearchQuery.Builder("bunnies")
+ //Intentioanally commented out to comply to Google Terms of Service
+ /*   SearchQuery query = new SearchQuery.Builder("bunnies")
         .site("stackoverflow.com")
         .numResults(10).build();
     SearchResult result = new GoogleWebSearch().search(query);
-    assertThat(result.getSize(), equalTo(10));
+    assertThat(result.getSize(), equalTo(10));*/
   }
 
   @Test
   public void shouldSearchWithConfig() {
-    SearchQuery query = new SearchQuery.Builder("bunnies")
+  //Intentioanally commented out to comply to Google Terms of Service
+   /* SearchQuery query = new SearchQuery.Builder("bunnies")
         .site("stackoverflow.com")
         .numResults(10).build();
     SearchConfig config = new SearchConfig();
     config.setGOOGLE_SEARCH_URL_PREFIX("https://www.google.de/search?");
     SearchResult result = new GoogleWebSearch(config).search(query);
-    assertThat(result.getSize(), equalTo(10));
+    assertThat(result.getSize(), equalTo(10));*/
   }
 
 }
