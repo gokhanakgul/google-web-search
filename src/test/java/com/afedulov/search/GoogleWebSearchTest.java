@@ -38,6 +38,16 @@ public class GoogleWebSearchTest {
     assertThat(result.getSize(), equalTo(10));*/
   }
 
+      @Test
+  public void shouldSearchWithSpecialCharacters() {
+ //Intentionally commented out to comply with Google Terms of Service
+  /*  SearchQuery query = new SearchQuery.Builder("java api")
+        .site("stackoverflow.com")
+        .numResults(10).build();
+    SearchResult result = new GoogleWebSearch().search(query);
+    assertThat(result.getSize(), equalTo(10));*/
+  }
+
   @Test
   public void shouldSearchWithConfig() {
   //Intentionally commented out to comply with Google Terms of Service

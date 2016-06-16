@@ -1,5 +1,7 @@
 package com.afedulov.search;
 
+import java.io.UnsupportedEncodingException;
+import java.net.URLEncoder;
 import java.util.Date;
 
 import lombok.Getter;
@@ -24,12 +26,16 @@ public class SearchQuery {
 
   public static class Builder {
 
-    private final String  query;
+    private       String  query;
     private       String  site;
     private       Integer     numResults = 10;
 
     public Builder(String query) {
-      this.query = query;
+      try {
+        this.query = URLEncoder.encode(query, "UTF-8");
+      } catch (UnsupportedEncodingException e) {
+        e.printStackTrace();
+      }
     }
 
     public Builder site(String site) {
