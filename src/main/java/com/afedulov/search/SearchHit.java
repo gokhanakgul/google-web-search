@@ -7,10 +7,10 @@ import lombok.Getter;
  */
 @Getter
 public class SearchHit {
-  private final String url;
+    private final String url;
 
-  public SearchHit(String url){
-    this.url = url;
-  }
+    public SearchHit(String url) {
+	this.url = url;
+    }
 
 }

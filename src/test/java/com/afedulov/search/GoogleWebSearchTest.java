@@ -31,11 +31,11 @@ public class GoogleWebSearchTest {
   @Test
   public void shouldSearch() {
  //Intentionally commented out to comply with Google Terms of Service
- /*   SearchQuery query = new SearchQuery.Builder("bunnies")
-        .site("stackoverflow.com")
+    SearchQuery query = new SearchQuery.Builder("budapeste blog")
+//        .site("stackoverflow.com")
         .numResults(10).build();
     SearchResult result = new GoogleWebSearch().search(query);
-    assertThat(result.getSize(), equalTo(10));*/
+    assertThat(result.getSize(), equalTo(10));
   }
 
       @Test
